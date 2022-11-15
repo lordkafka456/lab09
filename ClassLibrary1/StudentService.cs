@@ -30,11 +30,15 @@ namespace StudentServiceLib
          * */
         public bool addStudent(Student s)
         {
+            if(s == null)
+            {
+                throw new NullReferenceException();
+            }
             foreach (var x in students)
             {
                 if (x.Id == s.Id)
                 {
-                    return true;
+                    return false;
                 }
             }
 

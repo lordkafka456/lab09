@@ -1,5 +1,4 @@
 using StudentServiceLib;
-
 namespace TestProject1
 {
     [TestClass]
@@ -36,6 +35,25 @@ namespace TestProject1
             student.Score = 3;
             Assert.AreEqual('E', student.getLetterScore());
 
+        }
+        [TestMethod]
+        public void TestService1()
+        {
+            StudentService studentService = new StudentService();
+            Student student = new Student();
+            student.Id = 1;
+            Assert.IsTrue(studentService.addStudent(student));
+            Student student2 = new Student();
+            student2.Id = 1;
+            Assert.IsFalse(studentService.addStudent(student2));
+        }
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void TestServiceException2()
+        {
+            StudentService studentService = new StudentService();
+            Student student = null;
+            studentService.addStudent(student);
         }
     }
 }
